@@ -28,7 +28,7 @@ class DynamicAttention_SKTAttention(nn.Module):
         
         self.ln_1 = nn.LayerNorm(self.num_head * self.head_dim)
         self.ln_2 = nn.LayerNorm(self.num_head * self.head_dim)
-      
+
         
         self.drop_attn = torch.nn.Dropout(p=config.attention_dropout)
         
@@ -37,12 +37,11 @@ class DynamicAttention_SKTAttention(nn.Module):
         self.index_set_right =   torch.randperm(self.head_dim)
         self.index_set_right = self.index_set_right[:self.dp_rank] 
         
-     
+
         
         self.index_set_left =   torch.randperm(self.seq_len)
         self.index_set_left = self.index_set_left[:self.dp_rank]
         
-
     def combine_heads(self, X):
         X = X.transpose(1, 2)
         X = X.reshape(X.size(0), X.size(1), self.num_head * self.head_dim)
@@ -85,7 +84,7 @@ class DynamicAttention_SKTAttention(nn.Module):
         
         #### right part ####        
         Q2 = Q.transpose(-1,-2)
-     
+      
         if self.dp_rank <= self.head_dim:
 
             K2 = K[:,:,:,self.index_set_right]
