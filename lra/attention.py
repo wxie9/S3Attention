@@ -111,6 +111,14 @@ class Attention(nn.Module):
 
             K = self.split_heads(self.W_k(h))
             V = self.split_heads(self.W_v(h))
+
+            # h,m = self.lmufft(X)
+
+ 
+            # Q = self.split_heads(self.W_q(m))
+
+            # K = self.split_heads(self.W_k(m))
+            # V = self.split_heads(self.W_v(m))
  
             
             
