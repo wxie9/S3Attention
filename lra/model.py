@@ -7,7 +7,7 @@ import torch.nn as nn
 import numpy as np
 import math
 from torch.utils.checkpoint import checkpoint
-from attention import Attention
+from attention1 import Attention
 from attention_transformer_ls import AttentionLS
 # from h_transformer_1d import HAttention1D
 import pdb
